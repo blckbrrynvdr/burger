@@ -1,3 +1,72 @@
 @import "fonts";
 
+
+$gagalin: 'gagalinregular', sans-serif;
+$bold: 'ubuntubold', sans-serif;
+$light: 'ubuntulight', sans-serif;
+$medium: 'ubuntumedium', sans-serif;
+$regular: 'ubunturegular', sans-serif;
+$lifehack: 'lifehackmedium', sans-serif;
+
+
+html{
+	font-size: 10px;
+}
+
+body {
+	font-size: 1.4rem;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+$brand-white: #ffffff;
+$brand-transp-white: rgba(255, 255, 255, 0.5);
+$brand-silver: #cfd8dc;
+$brand-dark-silver: #b5babd;
+$brand-pinkish-grey: #c0afaa;
+$brand-cool-grey: #b0bec5;
+$brand-black-transp-light: rgba(20, 20, 20, 0.31);
+$brand-light-grey: #f5f2ed;
+$brand-orange: #f9b43b;
+$brand-dark-orange: #eb8c38;
+$brand-black: #000000;
+$brand-black-transp-dark: rgba(20, 20, 20, 0.7);
+$brand-dark-grey: #2f3234;
+$brand-silver-two: #c0c8cb;
+$brand-dark-transp-grey: rgba(47, 50, 52, 0.8);
+$brand-greyish-brown: #3e3e3e;
+$brand-tomato: #e35028;
+$brand-tomato-two: #e45028;
+$brand-brownish-grey: #626262;
+
+.brand-orange-btn {
+	padding: 1.3rem 1.6rem;
+	background-color: $brand-tomato-two;
+	font-family: $medium;
+	font-weight: 500;
+	text-transform: uppercase;
+	border: 0;
+	border-radius: 5px;
+	color: $brand-white;
+	cursor: pointer;
+	&:hover {
+		background-color: darken($brand-tomato,10%);
+	}
+}
+
+
+
+
+
+
+@import "blocks/route";
 @import "blocks/header";
+@import "blocks/footer";
+
+
+
+
+
