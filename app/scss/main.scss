@@ -11,16 +11,24 @@ $lifehack: 'lifehackmedium', sans-serif;
 
 html{
 	font-size: 10px;
+	height: 100%;
+	width: 100%;
 }
 
 body {
 	font-size: 1.4rem;
+	height: 100%;
+	width: 100%;
 }
 
 a {
 	text-decoration: none;
 }
 
+h1,h2,h3,h4,h5,h6{
+	margin: 0;
+	padding: 0;
+}
 
 $brand-white: #ffffff;
 $brand-transp-white: rgba(255, 255, 255, 0.5);

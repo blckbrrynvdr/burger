@@ -1,7 +1,30 @@
 .route {
 	height: 100vh;
-	 background-image: url(../img/video_bg.jpg);
-	 background-position: center;
-	 background-size: cover;
-	 background-repeat: no-repeat;
+	background-image: url(../img/video_bg.jpg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	.promo{
+		display: flex;
+		justify-content: center;
+		.promo__desc{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			max-width: 24%;
+			h1{
+				font-family: $gagalin;
+				color: $brand-orange;
+				font-size: 7.2rem;
+				line-height: 8.5rem;
+				font-weight: normal;
+			}
+			h2{
+				font-family: $lifehack;
+				font-size: 6.5rem;
+				line-height: 8.5rem;
+				color: $brand-white;
+			}
+		}
+	}
 }
