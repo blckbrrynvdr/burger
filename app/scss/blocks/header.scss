@@ -25,6 +25,7 @@
 				color: $brand-white;
 				display: flex;
 				align-items: center;
+				transition: color 0.3s;
 				&:after{
 					content: '';
 					width: 4px;
@@ -35,8 +36,8 @@
 					margin: 0 1.6rem;
 
 				}
-				&:last-child:after{
-					
+				&:hover{
+					color: darken($brand-white, 20%);
 				}
 			}
 

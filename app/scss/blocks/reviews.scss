@@ -1,0 +1,45 @@
+.reviews{
+	background: $brand-black;
+	color: $brand-white;
+	.reviews__list{
+		display: flex;
+		flex-wrap: wrap;
+		height: 100%;
+		.reviews__item{
+			filter: grayscale(100%);
+			background: center center / cover no-repeat;
+			width: 25%;
+			height: 50%;
+			position: relative;
+			&:hover{
+				.reviews__hover-block{
+					opacity: 1;
+					trasform: scale(1);
+				}
+			}
+			.reviews__hover-block{
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background:rgba($brand-black, 0.5);
+				opacity: 0;
+				trasform: scale(0.8);
+				transition: opacity 0.3s;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: 2rem;
+				.reviews__title{
+					margin-bottom: 3rem;
+					font-family: $gagalin;
+				}
+				.reviews__text{
+					padding-bottom: 1.7rem;
+				}
+			}
+		}
+	}
+
+}

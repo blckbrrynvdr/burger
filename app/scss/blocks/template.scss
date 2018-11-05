@@ -11,7 +11,8 @@ html{
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
+	line-height: 2.4rem;
 	height: 100%;
 	width: 100%;
 	position: relative;
@@ -88,20 +89,27 @@ p {
 }
 
 .btn {
-	display: block;
+	display: inline-block;
 	border-radius: 5px;
 	padding: 0 1.6rem;
 	line-height: 3.5rem;
 	text-transform: uppercase;
 	cursor: pointer;
-}
-.brand-orange-btn {
-	background-color: $brand-tomato-two;
 	font-family: $medium;
 	border: 0;
 	color: $brand-white;
+	transition: background-color 0.3s;
+}
+.brand-orange-btn {
+	background-color: $brand-tomato-two;
 	&:hover {
 		background-color: darken($brand-tomato,10%);
 	}
 }
 
+.brand-black-btn {
+	background-color: $brand-dark-grey;
+	&:hover {
+		background-color: darken($brand-dark-grey,10%);
+	}
+}
