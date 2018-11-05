@@ -48,6 +48,7 @@ p {
 .section {
 	height: 100vh;
 	min-height: 650px;
+	overflow: hidden;
 }
 
 .title{
@@ -113,3 +114,10 @@ p {
 		background-color: darken($brand-dark-grey,10%);
 	}
 }
+
+
+$desktop: 1200px;
+$laptop: 992px;
+$tablet: 768px;
+$phone: 480px;
+$phone-small: 357px;
