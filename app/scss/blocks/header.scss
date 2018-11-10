@@ -19,24 +19,24 @@
 		display: flex;
 		text-transform: uppercase;
 		.nav__item{
-			&:last-child .nav__link:after{
+			display: flex;
+			align-items: center;
+			&:last-child:after{
 				display: none;
+			}
+			&:after{
+				content: '';
+				width: 4px;
+				height: 4px;
+				display: block;
+				border-radius: 50%;
+				background: #fff;
+				margin: 0 1.6rem;
+
 			}
 			.nav__link {
 				color: $brand-white;
-				display: flex;
-				align-items: center;
 				transition: color 0.3s;
-				&:after{
-					content: '';
-					width: 4px;
-					height: 4px;
-					display: block;
-					border-radius: 50%;
-					background: #fff;
-					margin: 0 1.6rem;
-
-				}
 				&:hover{
 					color: darken($brand-white, 20%);
 				}

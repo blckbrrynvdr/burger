@@ -14,7 +14,8 @@
 			&:hover{
 				.reviews__hover-block{
 					opacity: 1;
-					trasform: scale(1);
+					transform: scale(1);
+					border-radius: 0%;
 				}
 			}
 			.reviews__hover-block{
@@ -25,12 +26,13 @@
 				bottom: 0;
 				background:rgba($brand-black, 0.5);
 				opacity: 0;
-				trasform: scale(0.8);
-				transition: opacity 0.3s;
+				transform: scale(0.5);
+				transition: opacity 0.3s, transform 0.3s  ease-out;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				padding: 2rem;
+				border-radius: 20%;
 				.reviews__title{
 					margin-bottom: 3rem;
 					font-family: $gagalin;

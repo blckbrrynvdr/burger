@@ -1,11 +1,12 @@
 .route {
 	background: url(../img/backgrounds/route_bg.jpg) center center / cover no-repeat;
 
-	.promo{
+.promo{
 		display: flex;
 		justify-content: center;
-		flex: .8;
+		flex: 1;
 		padding: 3rem;
+		margin-bottom: 20%;
 		.promo_container{
 			display: flex;
 			align-items: center;
@@ -35,6 +36,8 @@
 		text-align: center;
 		position: absolute;
 		bottom: 4rem;
-		min-width: 100%;
+		// min-width: 100%;
+		left: 50%;
+		transform: translateX(50%);
 	}
 }
