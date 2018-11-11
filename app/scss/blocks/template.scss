@@ -119,6 +119,18 @@ p {
 	}
 }
 
+.brand-transparent-btn {
+	background-color: unset;
+	text-transform: none;
+	font-family: $light;
+	font-size: 1.5rem;
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: capitalize;
+	}
+}
+
 
 $desktop: 1200px;
 $laptop: 992px;

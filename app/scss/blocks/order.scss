@@ -1,0 +1,112 @@
+.order {
+	background:url(../img/backgrounds/order_bg.jpg)
+	center center/cover no-repeat;
+	color: $brand-white;
+} 
+.form {
+	display: flex;
+	width: 100%;
+}
+.form__col{
+	flex:1;
+	margin-right: 2rem;
+
+}
+.form__row{
+	display: flex;
+	margin-bottom: 2rem;
+	&--margin {
+		margin-bottom: 1.2rem;
+	}
+}
+.form__block{
+	flex:1;
+	margin-right: 2rem;
+	&:last-child{
+		margin-right: 0;
+	}
+}
+.form__input{
+	width: 100%;
+	max-height: 3.6rem;
+	border-radius: 5px;
+	padding: 1.2rem 2.1rem;
+	font-size: 1.4rem;
+	&:hover,&:focus,&:active{
+		border-color: $brand-orange;
+	}
+}
+.form__textarea{
+	width: 100%;
+	resize: none;
+	min-height: 11.6rem;
+	padding: 1.2rem 2.1rem;
+	border-radius: 5px;
+	&:hover,&:focus,&:active{
+		border-color: $brand-orange;
+	}
+}
+
+.form__radio, .form__checkbox {
+	display: flex;
+	align-items: center;
+	position: relative;
+	margin-right: 2rem;
+}
+
+.form__radio-elem, .form__checkbox-elem{
+	display: none;
+}
+.form__radio-fake {
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius:50%;
+	background-color: $brand-white;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border:none;
+	margin-right: 1rem;
+	&:after {
+		content:'';
+		width: 0;
+		height: 0;
+		border-radius: 50%;
+		background-color: $brand-tomato;
+		transition:all 0.3s ease-out;
+	}
+}
+.form__radio-elem:checked + .form__radio-fake:after {
+	width: .8rem;
+	height: .8rem;
+}
+.form__checkbox-fake {
+	width: 1.6rem;
+	height: 1.6rem;
+	background-color: $brand-white;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border:none;
+	margin-right: 1rem;
+	&:after {
+		content:'';
+		width: 0;
+		height: 0;
+		transition: all 0.3s ease-out;
+		border-left: 0px solid $brand-tomato;
+		border-bottom: 0px solid $brand-tomato;
+		position: absolute;
+		top:3px;
+		left: 3px;
+	}
+}
+.form__checkbox-elem:checked + .form__checkbox-fake:after {
+	width: .8rem;
+	height: .4rem;
+	border-left: 3px solid $brand-tomato;
+	border-bottom: 3px solid $brand-tomato;
+	transform: rotate(-50deg);
+}
