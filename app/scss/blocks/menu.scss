@@ -10,6 +10,7 @@
 }
 .menu__acco-item {
 	background: center center / cover no-repeat;
+	display: flex;
 }
 
 
@@ -36,7 +37,6 @@
 	width: rem(80px);
 	display: block;
 	height: 100%;
-	float: left;
 	@include cover;
 	text-decoration: none;
 	position: relative;
@@ -60,7 +60,6 @@
 
 .menu__acco-content {
 	height: 100%;
-	float: left;
 	background: $brand-black-transp-dark;
 	width: 0;
 	overflow: hidden;
