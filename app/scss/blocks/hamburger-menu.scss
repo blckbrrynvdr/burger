@@ -1,0 +1,17 @@
+.hamburger-menu-link{
+	display: none;
+	
+	@include tablets {
+		display: flex;
+	}
+}
+
+.hamburger-menu-link__bars {
+	display: flex;
+	align-items: center;
+}
+
+.hamburger__menu-pic {
+	max-width: 100%;
+	max-height: 100%;
+}

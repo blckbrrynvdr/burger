@@ -1,0 +1,79 @@
+.menu {
+	background: url(../img/backgrounds/menu_bg.jpg) 50% no-repeat;
+	background-size: cover;
+	position: relative;
+}
+.menu__title {
+	position: absolute;
+	top: 10%;
+	left: 10%;
+}
+.menu__acco-item {
+	background: center center / cover no-repeat;
+}
+
+
+.menu__acco{
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+  display: flex;
+}
+
+.menu__acco-item {
+	height: 100%;
+
+
+	&.active {
+		.menu__acco-trigger-text {
+			color: $brand-orange;
+		}
+	}
+}
+
+.menu__acco-trigger {
+	width: rem(80px);
+	display: block;
+	height: 100%;
+	float: left;
+	@include cover;
+	text-decoration: none;
+  position: relative;
+  filter: grayscale(.8);
+
+    background: $brand-black-transp-dark url('') center center no-repeat;
+
+}
+
+.menu__acco-trigger-text {
+	font-size: rem(40px);
+	color: #fff;
+	font-family: $gagalin;
+	text-align: center;
+	white-space: nowrap;
+  position: absolute;
+  transform: rotate(-90deg) translateY(-50%);
+  transform-origin: 0 0;
+  left: 50%;
+  top: 100%;
+  margin-top: rem(-20px);
+
+}
+
+.menu__acco-content {
+	height: 100%;
+	float: left;
+	background: $brand-black-transp-dark;
+	width: 0;
+	overflow: hidden;
+}
+
+.menu__acco-text {
+	font-size: rem(14px);
+	color: $brand-white;
+	padding: rem(60px) rem(30px);
+	width: 100%;
+  line-height: 1.8;
+  display: none;
+}

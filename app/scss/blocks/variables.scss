@@ -25,3 +25,20 @@ $brand-greyish-brown: #3e3e3e;
 $brand-tomato: #e35028;
 $brand-tomato-two: #e45028;
 $brand-brownish-grey: #626262;
+
+@function rem($px){
+	@return $px / 16px+0rem;
+}
+
+@mixin cover(){
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+//brakepoints
+$desktop: 1200px;
+$laptops: 992px;
+$tablets: 768px;
+$phones: 480px;
+$phones-small: 357px;

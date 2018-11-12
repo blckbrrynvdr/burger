@@ -1,12 +1,17 @@
 @import "fonts";
 @import "blocks/variables";
+@import "blocks/adaptive";
 @import "blocks/template";
 
 @import "blocks/route";
 @import "blocks/header";
+@import "blocks/hamburger-menu";
 @import "blocks/best";
+@import "blocks/team";
+@import "blocks/menu";
 @import "blocks/reviews";
 @import "blocks/order";
+@import "blocks/map";
 @import "blocks/footer";
 @import "blocks/fixed-menu";
 

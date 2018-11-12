@@ -1,0 +1,71 @@
+.footer {
+  background: url('../img/backgrounds/footer_bg.jpg') center bottom no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: rem(10px) 0;
+  max-height: rem(60px);
+  @include phones {
+    max-height: rem(116px);
+  }
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  @include phones {
+    flex-direction: column;
+  }
+}
+
+.footer__col {
+  width: 50%;
+  margin-bottom: rem(15px);
+  @include phones {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.footer__address {
+  color: #ffffff;
+  font-size: rem(14px);
+}
+
+.socials {
+  display: flex;
+}
+.socials__item{
+  display: flex;
+  margin-right: rem(20px);
+}
+.socials__link{
+  display: flex;
+  max-height: rem(25px);
+  max-width: rem(29px);
+}
+
+.footer__phone {
+  color: $brand-tomato-two;
+  font-family: $bold;
+  text-decoration: none;
+  font-size: rem(14px);
+}
+
+.footer__col_right {
+  text-align: right;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+
+  @include phones {
+    justify-content: center;
+  }
+}
+
+.socials__link-icon {
+  max-width: 100%;
+}
