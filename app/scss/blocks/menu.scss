@@ -18,7 +18,7 @@
 	right: 0;
 	top: 0;
 	bottom: 0;
-  display: flex;
+	display: flex;
 }
 
 .menu__acco-item {
@@ -39,11 +39,8 @@
 	float: left;
 	@include cover;
 	text-decoration: none;
-  position: relative;
-  filter: grayscale(.8);
-
-    background: $brand-black-transp-dark url('') center center no-repeat;
-
+	position: relative;
+	filter: grayscale(.8);
 }
 
 .menu__acco-trigger-text {
@@ -52,12 +49,12 @@
 	font-family: $gagalin;
 	text-align: center;
 	white-space: nowrap;
-  position: absolute;
-  transform: rotate(-90deg) translateY(-50%);
-  transform-origin: 0 0;
-  left: 50%;
-  top: 100%;
-  margin-top: rem(-20px);
+	position: absolute;
+	transform: rotate(-90deg) translateY(-50%);
+	transform-origin: 0 0;
+	left: 50%;
+	top: 100%;
+	margin-top: rem(-20px);
 
 }
 
@@ -74,6 +71,27 @@
 	color: $brand-white;
 	padding: rem(60px) rem(30px);
 	width: 100%;
-  line-height: 1.8;
-  display: none;
+	line-height: 1.8;
+	display: none;
+	@include phones {
+		padding: rem(10px);
+	}
+}
+
+.menu__acco--active { 
+	.menu__acco-content{
+		width: rem(600px);
+		@include tablets {
+			width: rem(350px);
+		}
+				@include phones {
+			width: rem(200px);
+		}  
+						@include phones-small {
+			width: rem(185px);
+		}  
+	}
+	.menu__acco-text{
+		display: block;
+	}
 }
