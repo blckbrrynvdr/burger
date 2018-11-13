@@ -40,7 +40,18 @@
 	@include cover;
 	text-decoration: none;
 	position: relative;
-	filter: grayscale(.8);
+	@include phones {
+		width: rem(60px);
+	}
+	&:before {
+		content:"";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		background-color: $brand-black-transp-dark;
+	}
 }
 
 .menu__acco-trigger-text {
@@ -71,26 +82,28 @@
 	padding: rem(60px) rem(30px);
 	width: 100%;
 	line-height: 1.8;
-	display: none;
+	opacity: 0;
 	@include phones {
 		padding: rem(10px);
 	}
 }
 
-.menu__acco--active { 
+.active { 
 	.menu__acco-content{
 		width: rem(600px);
 		@include tablets {
 			width: rem(350px);
 		}
-				@include phones {
-			width: rem(200px);
+		@include phones {
+			width: 100%;
 		}  
-						@include phones-small {
-			width: rem(185px);
-		}  
+
 	}
 	.menu__acco-text{
-		display: block;
+		opacity: 1;
+				@include phones {
+			line-height: rem(25px);
+			font-size: rem(16px);
+		}  
 	}
 }

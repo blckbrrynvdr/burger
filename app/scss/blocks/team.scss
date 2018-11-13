@@ -24,6 +24,10 @@
 		right: 0;
 		padding: 0;
 	}
+			@include phones {
+		justify-content: flex-start;
+		padding-top: 30%;
+	}
 }
 .team__block-item {
 	display: flex;
@@ -32,6 +36,7 @@
 	@include tablets {
 		align-items: center;
 	}
+
 }
 .team__block-content{
 	display: flex;

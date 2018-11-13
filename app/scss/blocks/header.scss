@@ -31,12 +31,7 @@
 		@include tablets {
 			display: none;
 		}
-		@include phones {
-			display: none;
-		}
-		@include phones-small {
-			display: none;
-		}
+
 		.nav__item{
 			display: flex;
 			align-items: center;
@@ -67,3 +62,96 @@
 .header__links {
 	display: flex;
 }
+
+
+$t: 0.2s;
+$delay: 0.05s;
+
+.burger_menu {
+	display: none;
+	// position: absolute;
+	// top: 50%;
+	// left: 50%;
+	// transform: translate(-50%, -50%);
+	// overflow: hidden;
+	// padding: 15px;
+	// cursor: pointer;
+	padding-top: 3px;
+	@include tablets {
+		display: block;
+	}
+	&.active {
+		&:before {
+			animation: slideLeft $t $delay ease-out forwards; 
+		}
+		&:after {animation: slideRight $t $delay ease-out forwards}
+		.bar {
+			animation: rotate45 $t ease-out forwards;
+			&:last-child {animation: rotate135 $t $t ease-out forwards}
+		}
+	}
+	&.back {
+		&:before {
+			transform: translateX(-120%);
+			animation: slideBack $t $delay ease-out forwards;
+		}
+		&:after {
+			transform: translateX(120%);
+			animation: slideBack $t $delay ease-out forwards;
+		}
+		.bar {
+			transform: rotate(-45deg);
+			animation: rotateBack $t ease-out forwards;
+			&:last-child {
+				transform: rotate(-135deg);
+				animation: rotateBack $t $t ease-out forwards;
+			}
+		}
+	}
+	&:before {
+		content: '';
+		display: block;
+		width: 24px;
+		height: 4px;
+		background: white;		
+	}
+	&:after {
+		content: '';
+		display: block;
+		width: 24px;
+		height: 4px;
+		background: white;		
+	}
+	.bar {
+		display: block;
+		width: 24px;
+		height: 4px;
+		background: white; 
+		margin: 4px 0;		
+		&:last-child {
+			opacity: 0;
+			transform: rotate(-45deg);
+			position: absolute;
+			top: 25px;			
+		}
+	}
+}
+
+@keyframes rotate135 {
+	form {
+		opacity: 1;
+		transform: rotate(-45deg);
+	}
+	to {
+		opacity: 1;
+		transform: rotate(-135deg);
+	}
+}
+
+@keyframes rotate45 {to {transform: rotate(-45deg)}}
+@keyframes rotateBack {to {transform: rotate(0)}}
+@keyframes slideRight {to {transform: translateX(122%)}}
+@keyframes slideLeft {to {transform: translateX(-122%)}}
+@keyframes slideBack {to {transform: translateX(0)}}
+
+

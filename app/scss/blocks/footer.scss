@@ -68,4 +68,11 @@
 
 .socials__link-icon {
   max-width: 100%;
+  fill: $icon-gray;
+  opacity: .3;
+  transition: fill, opacity 0.3s ease-out;
+  &:hover {
+    fill: $brand-white;
+    opacity: 1;
+  }
 }

@@ -58,6 +58,9 @@ p {
 	height: 100vh;
 	min-height: rem(650px);
 	overflow: hidden;
+	@include phones {
+		min-height: inherit;
+	}
 }
 
 .title{
