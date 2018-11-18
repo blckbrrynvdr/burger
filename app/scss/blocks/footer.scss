@@ -6,27 +6,28 @@
   left: 0;
   right: 0;
   padding: rem(10px) 0;
-  max-height: rem(60px);
-  @include phones {
-    max-height: rem(116px);
+  max-height: rem(80px);
+    @include phones {
+    flex-direction: column;
+    min-height: rem(116px);
   }
 }
 
 .footer__container {
   display: flex;
   flex-direction: row;
-  // align-items: center;
   @include phones {
     flex-direction: column;
+    min-height: rem(116px);
   }
 }
 
 .footer__col {
   width: 50%;
-  margin-bottom: rem(15px);
   @include phones {
     width: 100%;
     text-align: center;
+    margin-bottom: rem(14px);
   }
 }
 
@@ -56,11 +57,10 @@
 }
 
 .footer__col_right {
-  text-align: right;
   margin-bottom: 0;
   display: flex;
   justify-content: flex-end;
-
+  align-items: center;
   @include phones {
     justify-content: center;
   }
