@@ -72,9 +72,11 @@ p {
 	margin-bottom: rem(20px);
 	&--color-dark{
 		color: $brand-dark-grey;
+		line-height: rem(64px);
 	}
 	&--color-white{
 		color: $brand-white;
+		line-height: rem(64px);
 	}
 	@include phones {
 		font-size: rem(63px);
@@ -110,6 +112,17 @@ p {
 
 .maincontent {
 	height: 100%;
+}
+.btn-arrow {
+	text-align: center;
+	position: absolute;
+	bottom: rem(40px);
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 20;
+	@include phones {
+		bottom: rem(30px);
+	}
 }
 
 .btn {

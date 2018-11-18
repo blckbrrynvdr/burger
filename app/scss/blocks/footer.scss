@@ -42,6 +42,9 @@
 .socials__item{
   display: flex;
   margin-right: rem(20px);
+  &:last-child {
+    margin-right: 0;
+  }
 }
 .socials__link{
   display: flex;

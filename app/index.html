@@ -7,7 +7,6 @@
 	<title>Проект BURGER</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
 	<link rel="stylesheet" href="./css/main.css">
-	<script src="./js/script.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -50,10 +49,34 @@
 							</nav>
 							<div class="header__links">
 								<a href="#" class="btn brand-orange-btn">заказать</a>
-								<div class="burger_menu">
-									<span class="bar"></span>
-									<span class="bar"></span>
-								</div>
+
+
+
+								  <div class="button_container" id="open">
+    <span class="button_container__item button_container--top"></span>
+    <span class="button_container__item button_container--middle"></span>
+    <span class="button_container__item button_container--bottom"></span>
+  </div>
+  
+
+  <div class="overlay" id="overlay">
+      <div class="button_container" id="close">
+          <span class="btn-close">X</span>
+      </div>
+    <nav class="overlay-menu">
+      <ul class="overlay-menu__list">
+        <li class="overlay-menu__item"><a class="overlay-menu__link" id="link" href="#">о нас</a></li>
+        <li class="overlay-menu__item"><a class="overlay-menu__link" href="#">бургеры</a></li>
+        <li class="overlay-menu__item"><a class="overlay-menu__link" href="#">команда</a></li>
+        <li class="overlay-menu__item"><a class="overlay-menu__link" href="#">меню</a></li>
+        <li class="overlay-menu__item"><a class="overlay-menu__link" href="#">отзывы</a></li>
+        <li class="overlay-menu__item"><a class="overlay-menu__link" href="#">как мы работаем</a></li>
+        <li class="overlay-menu__item"><a class="overlay-menu__link" href="#">контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+<script src="./js/script.js"></script>
+
 
 							</div>
 						</header>
@@ -68,7 +91,7 @@
 								</div>
 							</div>
 						</div>
-						<a href="#" class="btn-next">
+						<a href="#" class="btn-arrow">
 							<svg class="arrow-scroll">
 								<use xlink:href="./img/icons/sprite.svg#arrow-scroll"/>
 							</svg>
@@ -108,6 +131,112 @@
 								</div>
 							</li>
 						</ul>
+					</div>
+				</section>
+
+				<section class="burgers section">
+					<div class="container container--centered">
+						<div class="slider-wrap">
+							<a href="" class="btn-arrow--prev">				
+								<svg class="arrow-scroll arrow-scroll-prev">
+									<use xlink:href="./img/icons/sprite.svg#arrow-scroll"/>
+								</svg>						
+							</a>
+							<ul class="slider__list">
+								<li class="slider__item">
+									<div class="ingridients">
+										<svg class="ingridients__icon">
+											<use xlink:href="./img/icons/sprite.svg#burger"/>
+										</svg>
+										<div class="ingridients__icon-text">Состав</div>
+										<div class="ingridients__dropdown">
+											<ul class="ingridients__list">
+												<li class="ingridients__item">
+													<div class="ingridients__item-logo">
+														<svg class="ingridients__item-pic">
+															<use xlink:href="./img/icons/sprite.svg#beef"/>
+														</svg>
+													</div>
+													<div class="ingridients__item-text">Говядина</div>
+													<div class="ingridients__item-weight">300г</div>
+												</li>
+												<li class="ingridients__item">
+													<div class="ingridients__item-logo">
+														<svg class="ingridients__item-pic">
+															<use xlink:href="./img/icons/sprite.svg#buns" x="" y=""/>
+														</svg>
+													</div>
+													<div class="ingridients__item-text">Говядина</div>
+													<div class="ingridients__item-weight">300г</div>
+												</li>
+												<li class="ingridients__item">
+													<div class="ingridients__item-logo">
+														<svg class="ingridients__item-pic">
+															<use xlink:href="./img/icons/sprite.svg#natural" x="" y=""/>
+														</svg>
+													</div>
+													<div class="ingridients__item-text">Говядина</div>
+													<div class="ingridients__item-weight">300г</div>
+												</li>
+												<li class="ingridients__item">
+													<div class="ingridients__item-logo">
+														<svg class="ingridients__item-pic">
+															<use xlink:href="./img/icons/sprite.svg#sauce" x="" y=""/>
+														</svg>
+													</div>
+													<div class="ingridients__item-text">Говядина</div>
+													<div class="ingridients__item-weight">300г</div>
+												</li>
+												<li class="ingridients__item">
+													<div class="ingridients__item-logo">
+														<svg class="ingridients__item-pic">
+															<use xlink:href="./img/icons/sprite.svg#cucumber" x="" y=""/>
+														</svg>
+													</div>
+													<div class="ingridients__item-text">Говядина</div>
+													<div class="ingridients__item-weight">300г</div>
+												</li>
+												<li class="ingridients__item">
+													<div class="ingridients__item-logo">
+														<svg class="ingridients__item-pic">
+															<use xlink:href="./img/icons/sprite.svg#cheese" x="" y=""/>
+														</svg>
+													</div>
+													<div class="ingridients__item-text">Говядина</div>
+													<div class="ingridients__item-weight">300г</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="burger-weight">
+										<svg class="burger-weight__icon">
+											<use xlink:href="./img/icons/sprite.svg#kkal"/>
+										</svg>
+										<div class="burger-weight-number">1200</div>
+										<div class="burger-weight-text">ккал</div>
+									</div>
+									<div class="slider__left">
+										<img src="img/dark_beef.png" alt="" class="slider-pic"> 
+									</div>
+									<div class="slider__right">
+										<div class="title title--color-white slider__title">Dark beef burger</div>
+										<div class="slider__text">Ваш старый добрый знакомый, с рубленым бифштексом из 100% говядины, тремя кусочками нежнейшего сыра эмменталь, двумя помидорами, луком, салатом и соусом гриль теперь с добавлением экзотического соуса чураско.</div>
+										<div class="slider__options">
+											<div class="slider__price">
+												<div class="slider__price-amount">500</div>
+												<div class="slider__price-measure">рублей</div>
+											</div>
+											<button class="btn brand-orange-btn">заказать</button>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<a href="" class="btn-arrow--next">				
+								<svg class="arrow-scroll arrow-scroll-next">
+									<use xlink:href="./img/icons/sprite.svg#arrow-scroll"/>
+								</svg>						
+							</a>
+						</div>
 					</div>
 				</section>
 
@@ -470,7 +599,7 @@
 							</li>
 						</ul>
 
-
+					
 					</body>
 					<script src="./libs/jquery-3.3.1.min.js"></script>
 					<script src="./js/app.min.js"></script>
