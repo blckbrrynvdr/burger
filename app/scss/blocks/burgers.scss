@@ -22,6 +22,7 @@
 	left: 0;
 	top: 50%;
 	transform: translateY(-50%);
+	z-index: 200;
 }
 .btn-arrow--next {
 	width: 40px;
@@ -33,6 +34,7 @@
 	right: 0;
 	top: 50%;
 	transform: translateY(-50%);
+		z-index: 200;
 }
 .arrow-scroll-prev {
 	transform: rotate(90deg);
