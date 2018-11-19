@@ -5,7 +5,9 @@
 	color: #fff;
 }
 .slider-wrap {
-	padding-top: 10%;
+	@include tablets{
+		padding-top: 10%;
+	}
 	@include phones {
 		padding-top: 20%;
 	}
@@ -52,7 +54,7 @@
 .slider__left {
 	text-align: center;
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
 	justify-content: center;
 	@include tablets {
 		margin-bottom: rem(26px);
