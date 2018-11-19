@@ -17,7 +17,7 @@ $brand-light-grey: #f5f2ed;
 $brand-orange: #f9b43b;
 $brand-dark-orange: #eb8c38;
 $brand-black: #000000;
-$brand-black-transp-dark: rgba(20, 20, 20, 0.7);
+$brand-black-transp-dark: rgba(18, 19, 20, 0.8);
 $brand-dark-grey: #2f3234;
 $brand-silver-two: #c0c8cb;
 $brand-dark-transp-grey: rgba(47, 50, 52, 0.8);
@@ -25,3 +25,21 @@ $brand-greyish-brown: #3e3e3e;
 $brand-tomato: #e35028;
 $brand-tomato-two: #e45028;
 $brand-brownish-grey: #626262;
+$icon-gray: #CED7DB;
+
+@function rem($px){
+	@return $px / 16px+0rem;
+}
+
+@mixin cover(){
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+//brakepoints
+$desktop: 1200px;
+$laptops: 992px;
+$tablets: 769px;
+$phones: 480px;
+$phones-small: 357px;

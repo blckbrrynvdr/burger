@@ -1,0 +1,133 @@
+.order {
+	background:url(../img/backgrounds/order_bg.jpg)
+	center center/cover no-repeat;
+	color: $brand-white;
+} 
+.form {
+	display: flex;
+	width: 100%;
+	@include tablets {
+		flex-direction: column;
+		width: 65%;
+	}
+	@include phones {
+		width: 95%;
+	}
+}
+.form__col{
+	flex:1;
+	margin-right: rem(20px);
+	@include tablets {
+		margin-right: 0;
+	}
+	&:last-child {
+		margin-right: 0;
+	}
+
+}
+.form__row{
+	display: flex;
+	margin-bottom: rem(20px);
+	&--margin {
+		margin-bottom: rem(12px);
+	}
+}
+.form__block{
+	flex:1;
+	margin-right: rem(20px);
+	&:last-child{
+		margin-right: 0;
+	}
+}
+.form__input{
+	width: 100%;
+	max-height: rem(36px);
+	border-radius: 5px;
+	padding: rem(12px) rem(21px);
+	font-size: rem(14px);
+	&:hover,&:focus,&:active{
+		border-color: $brand-orange;
+	}
+}
+.form__textarea{
+	width: 100%;
+	resize: none;
+	min-height: rem(116px);
+	padding: rem(12px) rem(21px);
+	border-radius: 5px;
+
+	&:hover,&:focus,&:active{
+		border-color: $brand-orange;
+	}
+}
+
+.form__radio, .form__checkbox {
+	display: flex;
+	align-items: center;
+	position: relative;
+	margin-right: rem(20px);
+}
+
+.form__radio-elem, .form__checkbox-elem{
+	display: none;
+}
+.form__radio-fake {
+	width: 18px;
+	height: 18px;
+	border-radius:50%;
+	background-color: $brand-white;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border:none;
+	margin-right: rem(10px);
+
+	&:after {
+		content:'';
+		width: 0;
+		height: 0;
+		border-radius: 50%;
+		background-color: $brand-tomato;
+		transition:all 0.3s ease-out;
+	}
+}
+.form__radio-elem:checked + .form__radio-fake:after {
+	width: 8px;
+	height: 8px;
+}
+.form__checkbox-fake {
+	width: 16px;
+	height: 16px;
+	background-color: $brand-white;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border:none;
+	margin-right: rem(10px);
+	&:after {
+		content:'';
+		width: 0;
+		height: 0;
+		transition: all 0.3s ease-out;
+		border-left: 0px solid $brand-tomato;
+		border-bottom: 0px solid $brand-tomato;
+		position: absolute;
+		top:3px;
+		left: 2px;
+	}
+}
+.form__checkbox-elem:checked + .form__checkbox-fake:after {
+	width: 9px;
+	height: 4px;
+	border-left: 3px solid $brand-tomato;
+	border-bottom: 3px solid $brand-tomato;
+	transform: rotate(-50deg);
+}
+
+.form__row--center{
+	@include phones {
+		justify-content: center;
+	}
+}

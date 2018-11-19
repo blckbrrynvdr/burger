@@ -1,17 +1,28 @@
 .route {
 	background: url(../img/backgrounds/route_bg.jpg) center center / cover no-repeat;
 
-.promo{
+	.promo{
 		display: flex;
 		justify-content: center;
 		flex: 1;
-		padding: 3rem;
+		padding: rem(30px);
 		margin-bottom: 20%;
+		@include tablets {
+			padding: 0 12%;
+		}
 		.promo_container{
 			display: flex;
 			align-items: center;
+			
+			@include tablets {
+				flex-direction: column;
+			}
 			.promo__logo {
 				min-width: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
 			}
 			.promo-pic{
 				max-width: 100%;
@@ -21,13 +32,32 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
-				padding: 6rem 0 0 2rem;
-
+				padding: rem(60px) 0 0 rem(20px);
+				max-width: 99%;
+				@include tablets {
+					text-align: center;
+					padding: rem(40px) 0 0 0;
+				}
+				@include phones {
+					padding: rem(20px) 0 0 0;
+				}
+				.title{
+					@include phones {
+						margin-bottom: 0;
+					}
+				}
 				.promo__text{
 					font-family: $lifehack;
-					font-size: 6.5rem;
-					line-height: 8.5rem;
+					font-size: rem(65px);
+					line-height: rem(85px);
 					color: $brand-white;
+					@include tablets {
+						padding: 0;
+						font-size: rem(54px);
+					}
+					@include phones {
+						line-height: rem(60px);
+					}
 				}
 			}
 		}
@@ -35,9 +65,16 @@
 	.btn-next {
 		text-align: center;
 		position: absolute;
-		bottom: 4rem;
+		bottom: rem(40px);
 		// min-width: 100%;
 		left: 50%;
-		transform: translateX(50%);
+		transform: translateX(-50%);
+		@include phones {
+			bottom: rem(30px);
+		}
 	}
+}
+.arrow-scroll{
+	width: 30px;
+	height: 16px;
 }

@@ -1,0 +1,149 @@
+.team {
+	background: url(../img/backgrounds/team_bg.jpg) center center / cover no-repeat;
+	position: relative;
+	color: $brand-white;
+	.container {
+		padding: 0;
+		width: 100%;
+	}
+}
+.team__block {
+	background-color: $brand-black-transp-dark;
+	position: absolute;
+	right: -50%;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 5% 2% 0 7%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	@include tablets {
+		align-items: center;
+		width: 100%;
+		right: 0;
+		padding: 0;
+	}
+			@include phones {
+		justify-content: flex-start;
+		padding-top: 30%;
+	}
+}
+.team__block-item {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: rem(35px);
+	@include tablets {
+		align-items: center;
+	}
+
+}
+.team__block-content{
+	display: flex;
+	height: 0;
+	overflow: hidden;
+	@include tablets {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+}
+.team__block-title {
+	font-family: $gagalin;
+	font-size: rem(14px);
+	text-transform: uppercase;
+	margin-bottom: rem(17px);
+}
+.team__block-logo {
+	max-width: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+}
+.team__block-pic {
+	max-height: 100%;
+}
+.team__block-desc {
+	padding: 0 rem(21px);
+	width: 33%;
+	@include tablets {
+		width: 80%;
+	}
+}
+.team__desc-title{
+	font-family: $bold;
+	margin-bottom: rem(5px);
+
+}
+
+.active {
+	.team__block-title{
+		color: $brand-orange;
+	}
+	.team__block-content{
+		height: 100%;
+	}
+
+}
+
+
+.team__block-item {
+	margin-bottom: rem(40px);
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	&.active {
+		.team__block-title {
+			color: $brand-orange;
+
+			&:before {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+}
+
+.team__block-title {
+	color: #fff;
+	font-size: rem(14px);
+	font-family: $gagalin;
+	text-decoration: none;
+	position: relative;
+	margin-bottom: rem(20px);
+	align-items: center;  
+
+	@include tablets() {
+		font-size: rem(25px);
+	}
+
+	&:before, &:after {
+		content: "";
+		display: block;
+		position: absolute;
+		left: rem(-18px);
+		top: rem(8px);
+		width: 0;
+		height: 0;
+	}
+
+	&:before {
+		border-top: rem(7px) solid $brand-orange;
+		border-left: rem(5px) solid transparent;
+		border-right: rem(5px) solid transparent;
+		border-bottom: rem(0px) solid transparent;
+		transform: rotate(0deg);
+		transition: .3s;
+	}
+
+	&:after {
+		display: none;
+		border-bottom: rem(7px) solid $brand-orange;
+		border-left: rem(5px) solid transparent;
+		border-right: rem(5px) solid transparent;
+		border-top: rem(0px) solid transparent;
+	}
+}
