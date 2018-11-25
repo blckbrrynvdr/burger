@@ -43,12 +43,12 @@ for (var i = 0; i < link.length; i++){                            //переби
 //   //   menu.classList.remove('overlay--open');
 //   //   body.classList.remove('body-active-menu');
 //   // }
-  
+
 //   let addListeners = function() {
 //     buttonOpen.addEventListener('click', _toggleMenu);
-    
+
 //     let link = document.qu ('link');
-    
+
 //     link.addEventListener('click', _toggleMenu);
 //     buttonClose.addEventListener('click', _toggleMenu);
 //   }
@@ -68,12 +68,68 @@ for (var i = 0; i < link.length; i++){                            //переби
 
 
 
-/* вертикальный аккордеон*/
-
 /* горизонтальный аккордеон*/
 
-/* слайдер*/
+const accordElementVertical = document.querySelector('#acco_v');
 
-/* отзывы модалки*/
+createAccordV(accordElementVertical);
+
+function createAccordV(element) {
+  let activeContent;
+
+  const titles = element.querySelectorAll('.team__block-title');
+
+  element.addEventListener('click', function(event) {
+   if (event.target.classList.contains('team__block-title')) {
+
+    const title = event.target;
+
+    if (activeContent) {
+      activeContent.classList.remove('active');
+    }
+
+
+    activeContent = title.parentElement;
+    activeContent.classList.add('active');
+
+  } 
+});
+}
+
+
+
+
+  /* вертикальный аккордеон*/
+
+const accordElementHorizontal = document.querySelector('#acco_h');
+
+createAccord(accordElementHorizontal);
+
+function createAccord(element) {
+  let activeContent;
+
+  const titles = element.querySelectorAll('.menu__acco-trigger');
+
+  element.addEventListener('click', function(event) {
+    event.preventDefault();
+   if (event.target.classList.contains('menu__acco-trigger')) {
+
+    const title = event.target;
+
+    if (activeContent) {
+      activeContent.classList.remove('active');
+    }
+
+
+    activeContent = title.parentElement;
+    activeContent.classList.add('active');
+
+  } 
+});
+}
+
+  /* слайдер*/
+
+  /* отзывы модалки*/
 
 /* обработка формы*/

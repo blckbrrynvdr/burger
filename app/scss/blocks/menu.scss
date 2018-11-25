@@ -74,13 +74,14 @@
 	background: $brand-black-transp-dark;
 	width: 0;
 	overflow: hidden;
+	transition: width 0.5s ease-out;
 }
 
 .menu__acco-text {
 	font-size: rem(14px);
 	color: $brand-white;
 	padding: rem(60px) rem(30px);
-	width: 100%;
+	max-width: 100%;
 	line-height: 1.8;
 	opacity: 0;
 	@include phones {
