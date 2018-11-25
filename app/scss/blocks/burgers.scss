@@ -115,7 +115,8 @@
 		}
 	}
 	@include tablets {
-		top: -12%;
+		top: initial;
+		bottom: 100%;
 		left: 17%;
 	}
 	@include phones {
