@@ -92,7 +92,8 @@
 
 .team__block-item {
 	margin-bottom: rem(40px);
-
+	cursor: pointer;
+	transition:all 0.3s ease-out;
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -100,7 +101,7 @@
 	&.active {
 		.team__block-title {
 			color: $brand-orange;
-
+			
 			&:before {
 				transform: rotate(-180deg);
 			}
