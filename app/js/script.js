@@ -72,7 +72,7 @@ menu.open();
 /* горизонтальный аккордеон*/
 
 const accordElementVertical = document.querySelector('#acco_v');
-
+ 
 createAccordV(accordElementVertical);
 
 function createAccordV(element) {
@@ -101,44 +101,119 @@ function createAccordV(element) {
 });
 }
 
+/* горизонтальный аккордеон22222*/
+
 
 
 
   /* вертикальный аккордеон*/
 
-const accordElementHorizontal = document.querySelector('#acco_h');
+let accoMenu = (function() {
+  let items = document.querySelectorAll(".menu__acco-item"),
+    container = document.querySelector("#acco_h");
 
-createAccord(accordElementHorizontal);
+  let addListeners = function() {
+    container.addEventListener("click", function(e) {
+      e.preventDefault();
+      let target = e.target;
+      while (target != container) {
+        if (target.classList.contains("menu__acco-item")) {
+          if (target.classList.contains("active")) {
+            target.classList.remove("active");
+          } else {
+            for (let i = 0; i < items.length; i++) {
+              items[i].classList.remove("active");
+            }
+            target.classList.add("active");
+          }
+          return;
+        }
+        target = target.parentNode;
+      }
 
-function createAccord(element) {
-  let activeContent;
+      // console.log(target)
+    });
+  };
 
-  const titles = element.querySelectorAll('.menu__acco-trigger');
+  return {
+    init: addListeners
+  };
+})();
 
-  element.addEventListener('click', function(event) {
-    event.preventDefault();
-   if (event.target.classList.contains('menu__acco-trigger')) {
-
-    const title = event.target;
-
-    if (activeContent) {
-      activeContent.classList.remove('active');
-    }
+accoMenu.init();
 
 
-    activeContent = title.parentElement;
-    activeContent.classList.add('active');
+// const accordElementHorizontal = document.querySelector('#acco_h');
 
-  } 
-});
-}
+// createAccord(accordElementHorizontal);
+
+// function createAccord(element) {
+//   let activeContent;
+
+//   const titles = element.querySelectorAll('.menu__acco-trigger');
+
+//   element.addEventListener('click', function(event) {
+//     event.preventDefault();
+//    if (event.target.classList.contains('menu__acco-trigger')) {
+
+//     const title = event.target;
+
+//     if (activeContent) {
+//       activeContent.classList.remove('active');
+//     }
+
+
+//     activeContent = title.parentElement;
+//     activeContent.classList.add('active');
+
+//   } 
+// });
+// }
 
   /* слайдер*/
 
+const slide = (function(option){
+  const left = document.querySelector(option.l); //выборка стрелка влево
+  const right = document.querySelector(option.r); //выборка стрелка вправо
+  const slider = document.querySelector(option.list); //выборка контейнера
+  const computed = getComputedStyle(slider); //забираем стили
+  const sliderWidth = parseInt(getComputedStyle(slider).width);
+  var sliderItemsCounter = slider.children.length;
+
+  let moveSlide = function direction (direction){
+    direction.addEventListener("click", function(e) {
+      e.preventDefault();
+      let currentRight = parseInt(computed.right);
+      
+      if (currentRight < (sliderItemsCounter-1)*sliderWidth && direction==right) {
+        slider.style.right = currentRight + sliderWidth + "px";
+      }
+
+      if (currentRight > 0 && direction==left) {
+        slider.style.right = currentRight - sliderWidth + "px";
+      }
+    });
+  }
+ 
+  let addListeners = function(){
+    moveSlide(right);
+    moveSlide(left);
+  }
+
+
+
+  return {init: addListeners}
+})({
+  l: ".btn-arrow--prev",
+  r: "#arrow_next",
+  list: ".slider__list"
+});
+
+
+slide.init();
+
+
   /* отзывы модалки*/
-
-
-
 /* обработка формы*/
 
 const overlay = (function() {
@@ -202,6 +277,7 @@ const overlay = (function() {
   }
 })();
 
+/*обработка отправки формы*/
 
 var ajaxForm = function(form) {
 
@@ -271,3 +347,6 @@ let reviewOpen = function(content) {
 
 content = document.querySelector('#overlay1').innerHTML;
 reviewOpen(content);
+
+
+
