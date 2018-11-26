@@ -204,18 +204,27 @@ const overlay = (function() {
 
 
 var ajaxForm = function(form) {
-  var data = {
-    name: form.elements.name.value,
-    phone: form.elements.phone.value,
-    comment: form.elements.comment.value,
-    to: "v8a8rt@gmail.com"
-  },
-  url = "https://webdev-api.loftschool.com/sendmail/fail";
+
+  let formData = new FormData();
+  formData.append("name", form.elements.name.value);
+  formData.append("phone", form.elements.phone.value);
+  formData.append("comment", form.elements.comment.value);
+  formData.append("to", "v8a8rt@gmail.com");      
+
+  // var data = {
+  //   name: form.elements.name.value,
+  //   phone: form.elements.phone.value,
+  //   comment: form.elements.comment.value,
+  //   to: "v8a8rt@gmail.com"
+  // },
+  let url = "https://webdev-api.loftschool.com/sendmail/";
 
   const xhr = new XMLHttpRequest();
   xhr.responseType = "json";
   xhr.open("POST", url);
-  xhr.send(JSON.stringify(data));
+  xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+  xhr.send(formData);
+  // xhr.send(JSON.stringify(data));
 
   return xhr;
 }
@@ -244,7 +253,8 @@ let myForm = document.querySelector('#main-form');
 myForm.addEventListener('submit', submitForm);  
 
 
-/*Функция открывания отзыва*/
+
+/*Функция открытия отзыва*/
 
 let reviewOpen = function(content) {
   let button = document.querySelector('.review-btn');
