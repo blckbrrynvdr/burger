@@ -72,17 +72,19 @@
 .menu__acco-content {
 	height: 100%;
 	background: $brand-black-transp-dark;
-	width: 0;
+	max-width: 0;
 	overflow: hidden;
+	transition: all 0.5s ease-out;
 }
 
 .menu__acco-text {
 	font-size: rem(14px);
 	color: $brand-white;
 	padding: rem(60px) rem(30px);
-	width: 100%;
+	max-width: 100%;
 	line-height: 1.8;
 	opacity: 0;
+	transition-delay: .4s, .4s;
 	@include phones {
 		padding: rem(10px);
 	}
@@ -90,12 +92,12 @@
 
 .active { 
 	.menu__acco-content{
-		width: rem(600px);
+		max-width: rem(600px);
 		@include tablets {
-			width: rem(350px);
+			max-width: rem(350px);
 		}
 		@include phones {
-			width: 100%;
+			max0width: 100vw;
 		}  
 
 	}
