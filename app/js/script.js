@@ -213,6 +213,17 @@ const slide = (function(option){
 slide.init();
 
 
+/*  выпадашка с составом в слайдере(секция бургерс)*/
+
+$('.ingridients').on('mouseenter', e => {
+  console.log('its live')
+  $('.ingridients').addClass('ingridients--active');
+})
+$('.ingridients').on('mouseleave', e => {
+  console.log('its dead')
+  $('.ingridients').removeClass('ingridients--active');
+})
+
   /* отзывы модалки*/
 /* обработка формы*/
 

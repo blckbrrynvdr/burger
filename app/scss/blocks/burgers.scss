@@ -126,13 +126,20 @@
 	align-items: center;
 	opacity: .7;
 	transition: opacity .3s ease-out;
-	&:hover {
+	&--active {
 		opacity: 1;
 		.ingridients__dropdown {
 			left: 100%;
 			opacity: 1;
 		}
 	}
+	// &:hover {
+	// 	opacity: 1;
+	// 	.ingridients__dropdown {
+	// 		left: 100%;
+	// 		opacity: 1;
+	// 	}
+	// }
 	@include tablets {
 		top: initial;
 		bottom: 100%;
@@ -161,6 +168,15 @@
 	top: 0;
 	left: -9999px;
 	opacity: 0;
+}
+.ingridients__dropdown-close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: red;
+	font-size: rem(26px);
+	font-weight: bold;
+	padding-right: rem(4px);
 }
 .ingridients__list {
 	display: flex;
