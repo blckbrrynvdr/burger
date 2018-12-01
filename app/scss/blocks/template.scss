@@ -137,6 +137,7 @@ p {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	overflow: hidden;
 	&--centered{
 		align-items: center;
 		justify-content: center;
@@ -199,9 +200,6 @@ p {
 .brand-black-btn {
 	background-color: $brand-dark-grey;
 	margin-right: 0;
-	@include phones {
-		display: none;
-	}
 	&:hover,
 	&:focus,
 	&:active {
@@ -227,4 +225,9 @@ p {
 		display: inline-block;
 	}
 }
-
+.review-btn:before {
+	content: 'Подробнее';
+	@include phones {
+		content: 'читать отзыв';
+	}
+}

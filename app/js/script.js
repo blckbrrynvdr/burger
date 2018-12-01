@@ -215,13 +215,18 @@ slide.init();
 
 /*  выпадашка с составом в слайдере(секция бургерс)*/
 
-$('.ingridients').on('mouseenter', e => {
+const ingridientsDropdown = $('.ingridients');
+
+ingridientsDropdown.on('mouseenter', e => {
   console.log('its live')
-  $('.ingridients').addClass('ingridients--active');
+  ingridientsDropdown.addClass('ingridients--active');
 })
-$('.ingridients').on('mouseleave', e => {
+ingridientsDropdown.on('mouseleave', e => {
   console.log('its dead')
-  $('.ingridients').removeClass('ingridients--active');
+  ingridientsDropdown.removeClass('ingridients--active');
+})
+$('.ingridients__dropdown-close').on('click', e => {
+  ingridientsDropdown.removeClass('ingridients--active');
 })
 
   /* отзывы модалки*/
