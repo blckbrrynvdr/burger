@@ -365,4 +365,192 @@ content = document.querySelector('#overlay1').innerHTML;
 reviewOpen(content);
 
 
+/*Карта*/
+
+ymaps.ready(init);
+
+var placemarks = [
+    {
+        latitude: 59.97,
+        longitude: 30.31,
+        hintContent: '<div class="map__hint">ул. Литерторов, д. 19</div>',
+        balloonContent: [
+          '<div class="map__balloon">',
+          '<img class="map__burger-img" src="img/burger.png" alt="Бургер">',
+          'Самые вкусные бургеры тут! Заходите по адресу: ул. Литерторов, д. 19',
+          '</div>'
+      ]
+    },
+    {
+        latitude: 59.94,
+        longitude: 30.25,
+        hintContent: '<div class="map__hint">Малый проспект ВО, д.64</div>',
+        balloonContent: [
+            '<div class="map__balloon">',
+            '<img class="map__burger-img" src="img/burger.png" alt="Бургер">',
+            'Самые вкусные бургеры тут! Заходите по адресу: Малый проспект ВО, д.64',
+            '</div>'
+      ]
+    },
+    {
+          latitude: 59.93,
+          longitude: 30.34,
+          hintContent: '<div class="map__hint">Наб. реки Фонтанки, дю 56</div>',
+          balloonContent: [
+            '<div class="map__balloon">',
+            '<img class="map__burger-img" src="img/burger.png" alt="Бургер">',
+            'Самые вкусные бургеры тут! Заходите по адресу: Наб. реки Фонтанки, дю 56',
+            '</div>'
+      ]
+    },
+        {
+        latitude: 59.92,
+        longitude: 30.49,
+        hintContent: '<div class="map__hint">просп. Солидарности, 11, корп. 2</div>',
+        balloonContent: [
+            '<div class="map__balloon">',
+            '<img class="map__burger-img" src="img/burger.png" alt="Бургер">',
+            'Самые вкусные бургеры тут! Заходите по адресу: просп. Солидарности, 11, корп. 2',
+            '</div>'
+      ]
+    }
+],
+geoObjects = [];
+
+function init() {
+  var map = new ymaps.Map('map', {
+      center: [59.94, 30.32],
+      zoom: 12,
+      controls: ['zoomControl'],
+      behaviors: ['drag']
+  });
+
+  for (var i = 0; i < placemarks.length; i++) {
+    geoObjects[i] = new ymaps.Placemark ([placemarks[i].latitude, placemarks[i].longitude], {
+       hintContent: placemarks[i].hintContent,
+       balloonContent: placemarks[i].balloonContent.join('')
+    },
+    {
+      iconLayout: 'default#image',
+      iconImageHref: 'img/icons/map-marker.svg',
+      iconImageSize: [46,57],
+      iconImageOffset: [-10,-57]
+    });
+  }
+
+  var clusterer = new ymaps.Clusterer ({
+      clusterIcons: [
+        {
+           href: 'img/burger.png',
+           size: [100,100],
+           offset: [-50,-50]
+        }
+      ],
+      clusterIconContentLayout: null
+  });
+
+   map.geoObjects.add(clusterer);
+  // map.geoObjects.add(placemark);
+  clusterer.add(geoObjects);
+}
+
+/*OPS*/
+
+const sections = $('.section');
+const display = $('.maincontent');
+let inScroll = false;
+const md = new MobileDetect(window.navigator.userAgent);
+
+const isMobile = md.mobile();
+
+const setActiveMenuItem = itemEq => {
+  $('.fixed-menu__item')
+  .eq(itemEq)
+  .addClass('active')
+  .siblings()
+  .removeClass('active');
+};
+
+const performTransition = sectionEq => {
+ const position = `${sectionEq* -100}%`;
+ const mouseInertionIsFinished = 300;
+ const transitionIsFinished = 1000;
+
+if (inScroll == false) {
+    
+  inScroll = true;
+
+   display.css({
+      transform: `translateY(${position})`
+   });
+
+  sections
+  .eq(sectionEq)
+  .addClass("active-screen")
+  .siblings()
+  .removeClass("active-screen");
+
+  setTimeout(() => {
+      inScroll = false;
+      setActiveMenuItem(sectionEq);
+  }, transitionIsFinished + mouseInertionIsFinished);
+  }
+};
+
+const scrollToSection = direction => {
+  const activeSection = sections.filter('.active-screen');
+  const prevSection = activeSection.prev();
+  const nextSection = activeSection.next();
+
+  if (direction === "up" && prevSection.length) {
+    performTransition(prevSection.index());
+  }
+
+  if (direction === "down" && nextSection.length) {
+    performTransition(nextSection.index());
+  }
+};
+
+$(document).on({
+
+  wheel: e => {
+      const direction = e.originalEvent.deltaY > 0 ? "down" : "up";
+
+      scrollToSection(direction);
+    
+  },
+  keydown: e => {
+    console.log(e.keyCode)
+
+      switch(e.keyCode) {
+        case 40:
+          scrollToSection('down');
+          break;
+        case 38:
+          scrollToSection('up');
+          break;
+      }
+  }
+});
+
+
+
+$('[data-scroll-to]').on('click', e => {
+  e.preventDefault();
+
+  const target = $(e.currentTarget).attr('data-scroll-to');
+
+  performTransition(target);
+})
+
+  if (isMobile) {
+      $(document).swipe( {
+    swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+      /*библиотека возвращает фактичиское вверх вниз, а надо наоборот*/
+    const scrollDirection = direction === 'down' ? 'up' : 'down';
+    scrollToSection(scrollDirection);
+    }
+  });
+  } 
+
 

@@ -151,13 +151,14 @@ p {
 .wrapper {
 	position: relative;
 	width: 100%;
-
-	// height: 100%;
+	height: 100%;
 	overflow: hidden;
 }
 
 .maincontent {
 	height: 100%;
+	transform: translateY(0);
+	transition: transform 1s;
 }
 .btn-arrow {
 	text-align: center;
