@@ -1,0 +1,94 @@
+.work {
+	background: url('../img/backgrounds/how_we_work.jpg') center center / cover no-repeat;
+}
+.player__wrapper {
+	position: relative;
+	&.active{
+		.player__splash {
+			display: none;
+		}
+	}
+}
+.player__splash {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}	
+.player__controls {
+	position: relative;
+	background-color: $brand-greyish-brown;
+	height: 36px;
+	top: -44px;
+}
+.player__playback {
+	position: absolute;
+	height: 4px;
+	width: 410px;
+	background-color: $brand-brownish-grey;
+	top: 15px;
+	left: 50px;
+}
+.player__playback-button {
+	border-radius: 50%;
+	border: 1px solid $brand-brownish-grey;
+	background-color: $brand-brownish-grey;
+	height: 14px;
+	width: 14px;
+	position: absolute;
+	top: -5px;
+	left: -6px;
+}
+.player__start {
+	height: 0;
+	width: 0;
+	border: 11px solid transparent;
+	border-left-color: $brand-brownish-grey;
+	padding: 0;
+	border-right-width: 0;
+	background: transparent;
+	position: absolute;
+	top: 5px;
+	left: 20px;
+	outline: none;
+	transition: all 0.1s ease-out;
+}
+.paused {
+	border: 7px solid $brand-brownish-grey;
+	height: 20px;
+	border-top: 0;
+	border-bottom: 0;
+	padding: 1px;
+}
+.player__duration {
+	text-align: right;
+	padding: 6px;
+	color: $brand-brownish-grey;
+}
+.player__volume-button {
+	height: 20px;
+	width: 20px;
+	background: $brand-brownish-grey;
+	position: absolute;
+    top: 7px;
+    right: 162px;
+}
+.player__volume-playback {
+	position: absolute;
+	height: 4px;
+	width: 55px;
+	background-color: $brand-brownish-grey;
+	top: 15px;
+	right: 90px;
+}
+.player__volume-point {
+	border-radius: 50%;
+	border: 1px solid $brand-brownish-grey;
+	background-color: $brand-brownish-grey;
+	height: 14px;
+	width: 14px;
+	position: absolute;
+	top: -5px;
+	left: -6px;
+}
