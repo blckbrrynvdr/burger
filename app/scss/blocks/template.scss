@@ -55,6 +55,9 @@ body {
     width: 50%;
     padding: 2rem;
     border-radius: 10px;
+    @include phones {
+    	width: 70%;
+    }
 }
 .modal-review__title {
 	font-family: $gagalin;
@@ -100,11 +103,11 @@ p {
 
 
 .section {
-	height: 100vh;
+	height: 100%;
 	min-height: rem(650px);
 	overflow: hidden;
 	@include phones {
-		min-height: inherit;
+		min-height: initial;
 	}
 }
 

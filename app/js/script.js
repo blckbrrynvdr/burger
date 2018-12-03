@@ -530,8 +530,9 @@ $(document).on({
           scrollToSection('up');
           break;
       }
-  }
-});
+  },
+  touchmove: e => e.preventDefault
+}); 
 
 
 
