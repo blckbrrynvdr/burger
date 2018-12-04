@@ -1,140 +1,138 @@
-console.log('121212')
+let video;
+let durationControl; 
+let soundControl;
+let intervalId;
 
-let player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('yt-player', {
-          height: '405',
-          width: '660',
-          videoId: 'qy0HduXAr-Q',
-          playerVars: {
-            controls: 0,
-            disablekb: 0,
-            modestbranding: 0,
-            rel: 0,
-            autoplay: 0,
-            showinfo: 0
-          },
-          events: {
-            onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange
-          }
-        });
-      }
+// документ полностью загружен
+$().ready(function(){
+    video = document.getElementById("player"); 
 
-function onPlayerStateChange(event) {
-  switch(event.data) {
-    case 1:
-       $('.player__start').addClass('paused');
-       $('.player__wrapper').addClass('active');
-      break;
-    case 2:
-       $('.player__start').removeClass('paused');
-  }
-}
+    // вешаем обработчик события onclick на тег video
+    video.addEventListener('click', playStop);
 
-function onPlayerReady() {
-  const duration = player.getDuration();
-  let interval;
+    // обработчики событий для кнопок play
+    let playButtons = document.querySelectorAll(".play");
+    for (let i = 0; i < playButtons.length;i++){
+        playButtons[i].addEventListener('click',playStop);
+    }
 
-  updateTimer();
-  
-  clearInterval(interval);
-  interval = setInterval(() => {
-    const complited = player.getCurrentTime();
-    const percent = (complited / duration) * 100;
+    // обработчик событий для кнопки динамик
+    let micControl = document.getElementById("mic");
+    micControl.addEventListener('click',soundOf)
+    
+    // обработчики событий для ползунка продолжительности видео
+    durationControl = document.getElementById("durationLevel");    
+    durationControl.addEventListener('click',setVideoDuration);
+    durationControl.addEventListener('onmousemove',setVideoDuration);
+    durationControl.addEventListener('mousedown', stopInterval); 
+    durationControl.min = 0;
+    durationControl.value = 0;    
 
-  updateTimer();
+    // обработчики событий для ползунка громокости
+    soundControl = document.getElementById("micLevel");    
+    soundControl.addEventListener('click', changeSoundVolume);
+    soundControl.addEventListener('onmousemove', changeSoundVolume);
 
-   changeButtonPosition(percent); 
+    // задаем максимальные и минимальные значения громокости
+    soundControl.min = 0;
+    soundControl.max = 10;
+    // присваиваем ползунку максимальное значение
+    soundControl.value = soundControl.max;
+    
 
-  }, 1000);
-}
-
-function updateTimer() {
-  $('.player__duration-completed').text(formatTime( player.getCurrentTime() ));
-  $('.player__duration-estimate').text(formatTime( player.getDuration() ));
-}
-
-function formatTime(time) {
-  const roundTime = Math.round(time);
-
-  const minutes  = Math.floor(roundTime / 60);
-  const seconds  = roundTime - minutes * 60;
-  const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
-
-  return minutes + ":" + formattedSeconds;
-}
-
-$('.player__start').on('click', e => {
-// -1 – воспроизведение видео не началось
-// 0 – воспроизведение видео завершено
-// 1 – воспроизведение
-// 2 – пауза
-// 3 – буферизация
-// 5 – видео находится в очереди
-  const playerStatus = player.getPlayerState();
-
-  if (playerStatus !== 1) {
-    player.playVideo();
-   // $('.player__start').addClass('paused');
-  } else {
-    player.pauseVideo();
-    // $('.player__start').removeClass('paused');
-  }
-  
+    //обрабатываем окончание видео
+    video.addEventListener('ended', function () {
+        $(".video__player-img").toggleClass("video__player-img--active");
+        video.currentTime = 0;
+    }, false);
 });
 
-$('.player__playback').on('click', e => {
-  const bar = $(e.currentTarget);
-  const newButtonPosition = e.pageX - bar.offset().left;
-  const clickedPercent = (newButtonPosition / bar.width()) * 100;
-  const newPlayerTime = (player.getDuration() / 100) * clickedPercent;
+/*
+ Воспроизведение видео
+*/
+function playStop(){
+    // показывает или скрывает белую кнопку play
+    $(".video__player-img").toggleClass("video__player-img--active");  
+    // присваиваем ползунку продолжительности максимальное значение равное продолжительности нашего видео (в секундах)
+    durationControl.max = video.duration;
 
-  changeButtonPosition(clickedPercent);
-  player.seekTo(newPlayerTime);
-})
+    // проверим стоит ли видео на паузе, если да то продолжим воспроизведение. Если, наоборот, проигрыавыется, то остановим.
+    if (video.paused){
+        // запускаем видео
+        video.play();
+        intervalId = setInterval(updateDuration,1000/66)
+        $('.duration__img').addClass('active')
+        // video.webkitRequestFullScreen(); //возможность открыть в полноэкранном режиме
+    }else{
+        // останавливаем видео
+        video.pause();  
+        clearInterval(intervalId);
+        $('.duration__img').removeClass('active')
+        // document.webkitExitFullscreen(); //выйти из полноэкранного режима
+    }
+}
 
-$('.player__splash').on('click', e => {
-  player.playVideo();
-})
+function stopInterval(){
+    video.pause();
+    clearInterval(intervalId);
+}
 
-function changeButtonPosition(percent) {
-   $('.player__playback-button').css({
-      left: `${percent}%`
-    }); 
+/*
+    Реализует возможность перемотки нашего видео
+*/
+function setVideoDuration(){
+    if (video.paused){
+        video.play();
+    }else{
+        video.pause();  
+    }
+    video.currentTime = durationControl.value;  
+    intervalId = setInterval(updateDuration,1000/66);
 }
 
 
-  $('.player__volume-button').on('click', e => {
-    //true - если громкость отключена
-    //false - если громкость включена
-  const volumeStatus = player.isMuted();
+/*
+  Функция для обновления позиции ползунка продолжительности видео.   
+*/
+function updateDuration(){    
+    durationControl.value = video.currentTime;
+}
 
-  if (!volumeStatus) {
-    player.mute();
-    console.log('mute');
-  } else {
-     player.unMute();
-     console.log('unmute');
-  }
-})
 
-$('.player__volume-playback').on('click', e => {
-  const volumeBar = $(e.currentTarget);
-  const newVolumePosition = e.pageX - volumeBar.offset().left;
-  const clickedVPercent = (newVolumePosition / volumeBar.width()) * 100;
-  const newPlayerVolume = (player.getVolume() / 100) * clickedVPercent;
+/*
+    Управление звуком
+*/
+function soundOf(){    
+    /*
+        Делаем проверку уровня громкости. 
+        Если у нас нашего видео есть звук, то мы его выключаем. 
+        Предварительно запомнив текущую позицию громкости в переменную soundLevel
+    */
+    if (video.volume === 0){
+        video.volume = soundLevel;
+        soundControl.value = soundLevel*10;
+    }else{
+        /*
+            Если у нашего видео нет звука, то выставляем уровень громкости на прежний уровень.
+            Хранится в перменной soundLevel
+        */
+        soundLevel = video.volume;
+        video.volume = 0;
+        soundControl.value = 0;
+    }    
+}
 
-  changeVolumePosition(clickedVPercent);
-  player.setVolume(newPlayerVolume);
-  console.log(volumeBar);
-  console.log(newVolumePosition)
-  console.log(clickedVPercent)
-  console.log(newPlayerVolume)
-})
-
-function changeVolumePosition(percent) {
-   $('.player__volume-point').css({
-      left: `${percent}%`
-    }); 
+/*
+    Управление звуком видео
+*/
+function changeSoundVolume(){
+    /*
+        Св-во volume может принимать значения от 0 до 1
+        Делим на 10 для того что бы, была возможность более точной регулировки видео. 
+   video.volume 0 .... 1 
+   soundControl 0 .... 10
+        */
+   
+    video.volume = soundControl.value/10; 
+    console.log(video.volume) 
 }
