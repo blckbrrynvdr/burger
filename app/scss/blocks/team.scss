@@ -14,15 +14,20 @@
 	top: 0;
 	bottom: 0;
 	width: 100%;
-	padding: 5% 2% 0 7%;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
+	padding: 10% 2% 0 7%;
+	// display: flex;
+	// justify-content: center;
+	// flex-direction: column;
 	@include tablets {
 		align-items: center;
 		width: 100%;
 		right: 0;
 		padding: 0;
+		text-align: center;
+		padding-top: 30%;
+		.title {
+			margin-bottom: rem(50px);
+		}
 	}
 			@include phones {
 		justify-content: flex-start;
@@ -32,7 +37,7 @@
 .team__block-item {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: rem(35px);
+	margin-bottom: rem(10px);
 	@include tablets {
 		align-items: center;
 	}
@@ -62,6 +67,7 @@
 	height: 100px;
 	display: flex;
 	justify-content: center;
+	flex-shrink: 0;
 }
 .team__block-pic {
 	max-height: 100%;
@@ -84,14 +90,14 @@
 		color: $brand-orange;
 	}
 	.team__block-content{
-		max-height: 20vh;
+		max-height: 100vh;
 	}
 
 }
 
 
 .team__block-item {
-	margin-bottom: rem(40px);
+	margin-bottom: rem(10px);
 	cursor: pointer;
 	transition:all 0.3s ease-out;
 	&:last-child {
